@@ -1,0 +1,6 @@
+{
+  "name": "Moodify",
+  "description": "An implementation of the Spotify API",
+  "repository": "https://github.com/caedenf/WebFinalProject",
+  "keywords": ["node", "spotify", "heroku"],
+}
