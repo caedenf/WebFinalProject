@@ -144,6 +144,7 @@ app.get('/refresh_token', function(req, res) {
     }
   });
 });
+app.listen(process.env.PORT || 5000)
 /* End of Spotify code */
 
 
