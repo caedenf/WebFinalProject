@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous">
-    </script>	
+    </script>
     <style media="screen">
       html {
         height: 100%;
@@ -53,7 +53,22 @@
       }
 
       #changeText {
-        transition: 1s;
+        background-color: transparent;
+        border: none;
+        border-bottom: 3px solid #000000;
+        font-size: 60px;
+        font-family: 'Rubik', sans-serif;
+        font-weight: 700;
+        width: 300px;
+      }
+
+      #changeText::placeholder {
+        color: #000000;
+      }
+
+      #changeText:focus::placeholder {
+        /* color: #949494; */
+        opacity: 0.5;
       }
     </style>
   </head>
@@ -69,11 +84,12 @@
 
     <div class="mainSentence">
       <div style="text-align:center;">
-        <span>I want to listen to </span> &nbsp
-        <span id="changeText">HAPPY</span> &nbsp
+        <span>I want to listen to </span>
+        <!-- <span id="changeText">HAPPY</span> &nbsp -->
+        <input type="text" name="" value="" id="changeText" placeholder="HAPPY">
         <span> Songs.</span>
       </div>
-
+      <button type="button" name="button" id="searchButton">Search</button>
     </div>
 
     <footer id="scroll">
@@ -81,14 +97,15 @@
     </footer>
 
     <script type="text/javascript">
-      var textDemoArr = ["HAPPY","EXCITING","POSITIVE","RELAXING","CALMING"];
+      var textDemoArr = ["EXCITING","PARTY","RELAXING","CALMING","HAPPY"];
       var counter = 0;
-      var element = document.getElementById('changeText');
+      // var element = document.getElementById('changeText');
       var inst = setInterval(change, 3000);
 
       function change () {
-        element.innerHTML = textDemoArr[counter];
-        element.style.transitionDuration = "1s";
+        // element.innerHTML = textDemoArr[counter];
+        // element.style.transitionDuration = "1s";
+        $('#changeText').attr('placeholder',textDemoArr[counter]);
         counter++;
         if (counter >= textDemoArr.length) {
           counter = 0;
