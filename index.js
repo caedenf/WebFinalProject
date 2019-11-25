@@ -49,7 +49,7 @@ app.use(express.static(__dirname + '/views/pages'))
    .use(cookieParser());
 
 app.get('/', function(req, res){
-  res.render('index.ejs');
+  res.render('views/pages/index.ejs');
 });
 
 app.get('/login', function(req, res) {
