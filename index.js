@@ -1,3 +1,4 @@
+/*
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
@@ -8,9 +9,11 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-
+ */
 
 /* The following code is from Spotify */
+
+var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
@@ -39,7 +42,7 @@ var stateKey = 'spotify_auth_state';
 
 var app = express();
 
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/views/pages'))
    .use(cors())
    .use(cookieParser());
 
@@ -146,4 +149,7 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
-/* End of Spotify code */
+console.log('Listening on 8888');
+app.listen(8888);
+
+/* End of code */
