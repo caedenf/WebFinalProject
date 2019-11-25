@@ -62,7 +62,7 @@
     <div class="mainSentence">
       <div style="text-align:center;">
         <span>I want to listen to </span> &nbsp
-        <span>HAPPY</span> &nbsp
+        <span id="changeText">HAPPY</span> &nbsp
         <span> Songs.</span>
       </div>
 
@@ -71,6 +71,21 @@
     <footer id="scroll">
       <p style="text-align: center;">Scroll down to see what’s popular on Moodify</p>
     </footer>
+
+    <script type="text/javascript">
+      var textDemoArr = ["HAPPY","EXCITING","POSITIVE","RELAXING","CALMING"];
+      var counter = 0;
+      var element = document.getElementById('changeText');
+      var inst = setInterval(change, 5000);
+
+      function change () {
+        element.innerHTML = textDemoArr[counter];
+        counter++;
+        if (counter >= textDemoArr.length) {
+          counter = 0;
+        }
+      }
+    </script>
 
   </body>
 </html>
