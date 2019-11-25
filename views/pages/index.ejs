@@ -7,7 +7,24 @@
 <body>
   test test test
   
+<script>
+var data = null;
 
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+	if (this.readyState === this.DONE) {
+		console.log(this.responseText);
+	}
+});
+
+xhr.open("GET", "https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem");
+xhr.setRequestHeader("x-rapidapi-host", "deezerdevs-deezer.p.rapidapi.com");
+xhr.setRequestHeader("x-rapidapi-key", "ed0387ed35msh68081b71c8d3a3cp129c22jsne333d255819e");
+
+xhr.send(data);
+</script>
 
 </body>
 </html>
