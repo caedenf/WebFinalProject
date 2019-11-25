@@ -6,6 +6,10 @@
     <style>
       @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap');
     </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous">
+    </script>	
     <style media="screen">
       html {
         height: 100%;
@@ -47,6 +51,10 @@
         margin-top: 20%;
         text-align: center;
       }
+
+      #changeText {
+        transition: 1s;
+      }
     </style>
   </head>
 
@@ -76,10 +84,11 @@
       var textDemoArr = ["HAPPY","EXCITING","POSITIVE","RELAXING","CALMING"];
       var counter = 0;
       var element = document.getElementById('changeText');
-      var inst = setInterval(change, 5000);
+      var inst = setInterval(change, 3000);
 
       function change () {
         element.innerHTML = textDemoArr[counter];
+        element.style.transitionDuration = "1s";
         counter++;
         if (counter >= textDemoArr.length) {
           counter = 0;
