@@ -151,11 +151,6 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
-express()
-  .use(express.static(path.join(__dirname, '/views/pages')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-.listen(PORT, () => console.log(`Listening on ${ PORT }`))
+app.listen(PORT);
 
 /* End of code */
