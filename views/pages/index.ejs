@@ -129,7 +129,7 @@
         xhr.withCredentials = true;
         xhr.addEventListener("readystatechange", function () {
       	  if (this.readyState === this.DONE) {
-      		  console.log(this.responseText);
+      		  makePlaylist(this.responseText);
       	  }
         });
         var searchStr = "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + searchTerm;
@@ -137,6 +137,14 @@
         xhr.setRequestHeader("x-rapidapi-host", "deezerdevs-deezer.p.rapidapi.com");
         xhr.setRequestHeader("x-rapidapi-key", "ed0387ed35msh68081b71c8d3a3cp129c22jsne333d255819e");
         xhr.send(data);
+      }
+      
+      function makePlaylist(data) {
+        var songArray = [];
+        var stringified = JSON.stringify(data);
+        var objectified = JSON.parse(stringified);
+        songArray = objectified;
+        console.log(songArray);
       }
     </script>
 
