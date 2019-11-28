@@ -143,7 +143,16 @@
         var songArray = [];
         var objectified = JSON.parse(data);
         songArray = objectified.data;
-        console.log(songArray);
+        for (var i = 0; i < songArray.length(); i++) {
+          printSong(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
+        }
+      }
+      
+      function printSong(title, artist, album, preview) {
+        console.log(title);
+        console.log(artist);
+        console.log(album);
+        console.log(preview);
       }
     </script>
 
