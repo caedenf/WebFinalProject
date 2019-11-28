@@ -141,8 +141,7 @@
       
       function makePlaylist(data) {
         var songArray = [];
-        var stringified = JSON.stringify(data);
-        var objectified = JSON.parse(stringified);
+        var objectified = JSON.parse(data);
         songArray = objectified;
         console.log(songArray);
       }
