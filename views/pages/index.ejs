@@ -146,8 +146,8 @@
         var songArray = [];
         var objectified = JSON.parse(data);
         songArray = objectified.data;
+        document.getElementById("results").innerHTML = "";
         for (var i = 0; i < songArray.length; i++) {
-          document.getElementById("results").innerHTML = "";
           printSong(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
         }
       }
