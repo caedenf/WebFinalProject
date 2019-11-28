@@ -143,8 +143,8 @@
         var songArray = [];
         var stringified = JSON.stringify(data);
         var objectified = JSON.parse(stringified);
-        songArray = objectified.data;
-        console.log(songArray[0]);
+        songArray = objectified;
+        console.log(songArray[0].title);
       }
     </script>
 
