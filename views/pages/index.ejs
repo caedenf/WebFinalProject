@@ -95,7 +95,7 @@
         <input type="text" name="" value="" id="changeText" placeholder="HAPPY">
         <span> Songs.</span>
       </div>
-      <button type="button" name="button" id="searchButton">Search</button>
+      <button onclick="searchSongs" type="button" name="button" id="searchButton">Search</button>
     </div>
 
     <footer id="scroll">
@@ -116,6 +116,11 @@
         if (counter >= textDemoArr.length) {
           counter = 0;
         }
+      }
+      
+      function searchSongs() {
+        var searchParam = document.getElementById("searchButton").innerHTML;
+        console.log(searchParam);
       }
 
       var data = null;
