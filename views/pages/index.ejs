@@ -97,6 +97,9 @@
       </div>
       <button onclick="searchSongs()" type="button" name="button" id="searchButton">Search</button>
     </div>
+    
+    <div class="results" id="results">
+    </div>
 
     <footer id="scroll">
       <p style="text-align: center;">Scroll down to see what’s popular on Moodify</p>
@@ -149,10 +152,10 @@
       }
       
       function printSong(title, artist, album, preview) {
-        console.log(title);
-        console.log(artist);
-        console.log(album);
-        console.log(preview);
+        document.findElementById("results").innerHTML += "Title: " + title + "<br/>";
+        document.findElementById("results").innerHTML += "Artist: " + artist + "<br/>";
+        document.findElementById("results").innerHTML += "Album: " + album + "<br/>";
+        document.findElementById("results").innerHTML += "Preview link: " + preview + "<br/>";
       }
     </script>
 
