@@ -93,7 +93,7 @@
         <span>I want to listen to </span>
         <!-- <span id="changeText">HAPPY</span> &nbsp -->
         <input type="text" name="" value="" id="changeText" placeholder="HAPPY">
-        <span> Songs.</span>
+        <span> songs.</span>
       </div>
       <button onclick="searchSongs" type="button" name="button" id="searchButton">Search</button>
     </div>
@@ -128,7 +128,7 @@
       xhr.withCredentials = true;
       xhr.addEventListener("readystatechange", function () {
       	if (this.readyState === this.DONE) {
-      		console.log(this.responseText);
+      		//console.log(this.responseText);
       	}
       });
       xhr.open("GET", "https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem");
