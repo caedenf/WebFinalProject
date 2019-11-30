@@ -93,9 +93,12 @@
         <span>I want to listen to </span>
         <!-- <span id="changeText">HAPPY</span> &nbsp -->
         <input type="text" name="" value="" id="changeText" placeholder="HAPPY">
-        <span> Songs.</span>
+        <span> songs.</span>
       </div>
-      <button type="button" name="button" id="searchButton">Search</button>
+      <button onclick="searchSongs()" type="button" name="button" id="searchButton">Search</button>
+    </div>
+    
+    <div class="results" id="results">
     </div>
 
     <footer id="scroll">
@@ -117,19 +120,44 @@
           counter = 0;
         }
       }
-
-      var data = null;
-      var xhr = new XMLHttpRequest();
-      xhr.withCredentials = true;
-      xhr.addEventListener("readystatechange", function () {
-      	if (this.readyState === this.DONE) {
-      		console.log(this.responseText);
-      	}
-      });
-      xhr.open("GET", "https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem");
-      xhr.setRequestHeader("x-rapidapi-host", "deezerdevs-deezer.p.rapidapi.com");
-      xhr.setRequestHeader("x-rapidapi-key", "ed0387ed35msh68081b71c8d3a3cp129c22jsne333d255819e");
-      xhr.send(data);
+      
+      function searchSongs() {
+        var searchParam = document.getElementById("changeText").value;
+        makeRequest(searchParam);
+      }
+      
+      function makeRequest(searchTerm) {
+        var data = null;
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        xhr.addEventListener("readystatechange", function () {
+      	  if (this.readyState === this.DONE) {
+      		  makePlaylist(this.responseText);
+      	  }
+        });
+        var searchStr = "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + searchTerm;
+        xhr.open("GET", searchStr);
+        xhr.setRequestHeader("x-rapidapi-host", "deezerdevs-deezer.p.rapidapi.com");
+        xhr.setRequestHeader("x-rapidapi-key", "ed0387ed35msh68081b71c8d3a3cp129c22jsne333d255819e");
+        xhr.send(data);
+      }
+      
+      function makePlaylist(data) {
+        var songArray = [];
+        var objectified = JSON.parse(data);
+        songArray = objectified.data;
+        document.getElementById("results").innerHTML = "";
+        for (var i = 0; i < songArray.length; i++) {
+          printSong(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
+        }
+      }
+      
+      function printSong(title, artist, album, preview) {
+        document.getElementById("results").innerHTML += "Title: " + title + "<br/>";
+        document.getElementById("results").innerHTML += "Artist: " + artist + "<br/>";
+        document.getElementById("results").innerHTML += "Album: " + album + "<br/>";
+        document.getElementById("results").innerHTML += "Preview link: " + preview + "<br/>";
+      }
     </script>
 
   </body>
