@@ -14,14 +14,12 @@ admin.initializeApp({
 });
 
 // As an admin, the app has access to read and write all data, regardless of Security Rules
-//var db = admin.database();
-
-var ref = admin.database().ref();
-/*
+var db = admin.database();
+var ref = db.ref();
 ref.once("value", function(snapshot) {
   console.log(snapshot.val());
 });
-*/
+
 
 
 express()
