@@ -250,13 +250,11 @@
   firebase.analytics();
   
   function writeSongData(title, artist, album, link) {
-  console.log("here");
-  firebase.database().ref('songs/' + title).set({
+  firebase.database().ref(searchTerm + "/" + title).set({
     artist: artist,
     album: album,
     link: link
   });
-  console.log("here2");
 }
 
 </script>
