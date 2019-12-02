@@ -81,6 +81,10 @@
         text-align: center;
       }
 
+      .songFeedback {
+        width: 20%;
+        background-color: green;
+      }
       .songFeedbackTitle {
         font-weight: 600;
         font-size: 30px;
@@ -185,13 +189,19 @@
       }
 
       function printSong(title, artist, album, preview) {
-        document.getElementById("results").innerHTML += "Title: " + title + "<br/>";
-        document.getElementById("results").innerHTML += "Artist: " + artist + "<br/>";
-        document.getElementById("results").innerHTML += "Album: " + album + "<br/>";
-        document.getElementById("results").innerHTML += "Preview link: " + preview + "<br/>";
-        $("#results").append("<span class='songFeedbackTitle' >" + title + "</span><br/>"); //append the song title
-        $("#results").append("<span class='songFeedbackArtist'>By " + artist + ", <i>" + album + "</i></span><br/>"); //append the song artist and album
-        $("#results").append("<a class='songFeedbackPlayback 'href=" + preview + ">Play</a><br/>"); //append the song play link
+        // document.getElementById("results").innerHTML += "Title: " + title + "<br/>";
+        // document.getElementById("results").innerHTML += "Artist: " + artist + "<br/>";
+        // document.getElementById("results").innerHTML += "Album: " + album + "<br/>";
+        // document.getElementById("results").innerHTML += "Preview link: " + preview + "<br/>";
+        // $("#results").append("<span class='songFeedbackTitle' >" + title + "</span><br/>"); //append the song title
+        // $("#results").append("<span class='songFeedbackArtist'>By " + artist + ", <i>" + album + "</i></span><br/>"); //append the song artist and album
+        // $("#results").append("<a class='songFeedbackPlayback 'href=" + preview + ">Play</a><br/>");
+
+        $("#results").append("<div class='songFeedback'>
+                              <span class='songFeedbackTitle' >" + title + "</span><br/>
+                              <span class='songFeedbackArtist'>By " + artist + ", <i>" + album + "</i></span><br/>
+                              <a class='songFeedbackPlayback 'href=" + preview + ">Play</a><br/>
+                              </div>");
          //$("#results").append('<img class="playBackButton" src="playback.png" />');
         //<img class="playBackButton" src="playback.png" />
         //$(#results).append("<button class='songFeedbackPlayback' >Play</button>");
