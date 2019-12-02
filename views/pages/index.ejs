@@ -153,7 +153,7 @@
     <footer id="scroll">
       <p style="text-align: center;">Scroll down to see who's popular on Moodify</p>
       <div id="pastSearches" class="pastSearches">
-        
+
       </div>
     </footer>
 
@@ -168,7 +168,7 @@
 <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
 
     <script type="text/javascript">
-    
+
       var textDemoArr = ["EXCITING","PARTY","RELAXING","CALMING","HAPPY"];
       var counter = 0;
       // var element = document.getElementById('changeText');
@@ -225,7 +225,7 @@
         // $("#results").append("<span class='songFeedbackArtist'>By " + artist + ", <i>" + album + "</i></span><br/>"); //append the song artist and album
         // $("#results").append("<a class='songFeedbackPlayback 'href=" + preview + ">Play</a><br/>");
 
-        $("#results").append("<div class='songFeedback' >"+
+        $("#results").append("<div class='songFeedback' style='text-align:center;'>"+
                               "<span class='songFeedbackTitle' >" + title + "</span><br/>"+
                               "<span class='songFeedbackArtist'>By " + artist + ", <br/><i>" + album + "</i></span><br/>" +
                               "<a class='songFeedbackPlayback 'href=" + preview + ">Play</a><br/>" +
@@ -253,7 +253,7 @@
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
       loadPastSongs();
-  
+
   function writeSongData(title, artist, album, link) {
   firebase.database().ref("songs/" + title).set({
     artist: artist,
