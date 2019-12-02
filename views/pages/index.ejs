@@ -80,6 +80,10 @@
       #searchButton {
         text-align: center;
       }
+
+      .songFeedbackTitle {
+        color: red;
+      }
     </style>
   </head>
 
@@ -161,11 +165,20 @@
         document.getElementById("results").innerHTML += "Artist: " + artist + "<br/>";
         document.getElementById("results").innerHTML += "Album: " + album + "<br/>";
         document.getElementById("results").innerHTML += "Preview link: " + preview + "<br/>";
-        $("#results").append("<span>" + title + "</span><br/>"); //append the song title
-        $("#results").append("<span>By " + artist + ", <i>" + album + "</i></span><br/>"); //append the song artist and album
-        $("#results").append("<a href=" + preview + ">123</a><br/>"); //append the song play link
-        $("#results").append('<img class="playBackButton" src="playback.png" />');
+        // $("#results").append("<span>" + title + "</span><br/>"); //append the song title
+        // $("#results").append("<span>By " + artist + ", <i>" + album + "</i></span><br/>"); //append the song artist and album
+        // $("#results").append("<a href=" + preview + ">123</a><br/>"); //append the song play link
+        // $("#results").append('<img class="playBackButton" src="playback.png" />');
+        $("<span/>",{
+            text: title,
+            class: "songFeedbackTitle";
+        }).appendTo("#results");
         //<img class="playBackButton" src="playback.png" />
+
+        // $('<span/>',{
+        //     text: 'some text',
+        //     class: 'someClass'
+        // }).appendTo(this);
 
       }
     </script>
