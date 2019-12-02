@@ -267,10 +267,11 @@ function loadPastSongs() {
   db.on('value', function(snapshot) {
     var array = [];
     var stringified = JSON.stringify(snapshot.val().songs);
+    console.log(stringified);
     var objectified = JSON.parse(stringified);
     array = objectified;
     console.log(array);
-    document.getElementById("pastSearches").innerHTML += array[Object.keys(array)[0]].id;
+    document.getElementById("pastSearches").innerHTML += array[Object.keys(array)[0]];
   });
 
 }
