@@ -269,6 +269,7 @@ function loadPastSongs() {
     var stringified = JSON.stringify(snapshot.val().songs);
     var objectified = JSON.parse(stringified);
     array = objectified;
+    document.getElementById("pastSearches").innerHTML = "";
     for (var i = 0; i < 10; i++) {
       document.getElementById("pastSearches").innerHTML += array[Object.keys(array)[i]].artist + "<br/>";
       }
