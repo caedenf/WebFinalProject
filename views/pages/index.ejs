@@ -97,8 +97,8 @@
       </div>
       <button onclick="searchSongs()" type="button" name="button" id="searchButton">Search</button>
     </div>
-    
-    <div class="results" id="results">
+
+    <div class="results" id="results" style="text-align:center;">
     </div>
 
     <footer id="scroll">
@@ -120,12 +120,12 @@
           counter = 0;
         }
       }
-      
+
       function searchSongs() {
         var searchParam = document.getElementById("changeText").value;
         makeRequest(searchParam);
       }
-      
+
       function makeRequest(searchTerm) {
         var data = null;
         var xhr = new XMLHttpRequest();
@@ -141,7 +141,7 @@
         xhr.setRequestHeader("x-rapidapi-key", "ed0387ed35msh68081b71c8d3a3cp129c22jsne333d255819e");
         xhr.send(data);
       }
-      
+
       function makePlaylist(data) {
         var songArray = [];
         var objectified = JSON.parse(data);
@@ -151,7 +151,7 @@
           printSong(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
         }
       }
-      
+
       function printSong(title, artist, album, preview) {
         document.getElementById("results").innerHTML += "Title: " + title + "<br/>";
         document.getElementById("results").innerHTML += "Artist: " + artist + "<br/>";
