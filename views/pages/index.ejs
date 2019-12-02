@@ -271,8 +271,9 @@ function loadPastSongs() {
     array = objectified;
     var length = Object.keys(array).length-1;
     document.getElementById("pastSearches").innerHTML = "";
-    for (var i = length; i > length-10; i--) {
-      document.getElementById("pastSearches").innerHTML += array[Object.keys(array)[i]].artist + "<br/>";
+    for (var i = 0; i < 10; i++) {
+      var rand = Math.floor((Math.random() * length) + 1);
+      document.getElementById("pastSearches").innerHTML += array[Object.keys(array)[rand]].artist + "<br/>";
       }
   });
 
