@@ -255,7 +255,7 @@
       loadPastSongs();
   
   function writeSongData(title, artist, album, link) {
-  firebase.database().ref(searchTerm + "/" + title).set({
+  firebase.database().ref("songs/" + title).set({
     artist: artist,
     album: album,
     link: link
