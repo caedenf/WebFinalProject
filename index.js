@@ -15,7 +15,7 @@ admin.initializeApp({
 
 // As an admin, the app has access to read and write all data, regardless of Security Rules
 var db = admin.database();
-var ref = db.ref("restricted_access/secret_document");
+var ref = db.ref("playlists/TvKUrtzg7rF0CTHjh5cN");
 ref.once("value", function(snapshot) {
   console.log(snapshot.val());
 });
