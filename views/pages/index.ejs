@@ -83,12 +83,29 @@
 
       .songFeedbackTitle {
         font-weight: 600;
-        font-size: 20px;
+        font-size: 30px;
       }
 
       .songFeedbackArtist {
-        font-weight: 400;
+        font-weight: 500;
         font-size: 15px;
+      }
+
+      .songFeedbackPlayback {
+        background-color: #1c87c9;
+        border: none;
+        color: white;
+        padding: 20px 34px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+
+      .songFeedbackPlayback:hover {
+
       }
     </style>
   </head>
@@ -173,9 +190,11 @@
         document.getElementById("results").innerHTML += "Preview link: " + preview + "<br/>";
         $("#results").append("<span class='songFeedbackTitle' >" + title + "</span><br/>"); //append the song title
         $("#results").append("<span class='songFeedbackArtist'>By " + artist + ", <i>" + album + "</i></span><br/>"); //append the song artist and album
-        // $("#results").append("<a href=" + preview + ">123</a><br/>"); //append the song play link
+        $("#results").append("<a class='songFeedbackPlayback 'href=" + preview + ">Play</a><br/>"); //append the song play link
          //$("#results").append('<img class="playBackButton" src="playback.png" />');
         //<img class="playBackButton" src="playback.png" />
+        //$(#results).append("<button class='songFeedbackPlayback' >Play</button>");
+
 
       }
     </script>
