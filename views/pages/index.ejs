@@ -82,8 +82,9 @@
       }
 
       .songFeedback {
-        width: 20%;
-        background-color: green;
+        width: 27%;
+        background-color: rgba(255, 255, 255, 0.3);;
+        text-align: center;
       }
 
       .songFeedbackTitle {
@@ -200,9 +201,10 @@
 
         $("#results").append("<div class='songFeedback' >"+
                               "<span class='songFeedbackTitle' >" + title + "</span><br/>"+
-                              "<span class='songFeedbackArtist'>By " + artist + ", <i>" + album + "</i></span><br/>" +
+                              "<span class='songFeedbackArtist'>By " + artist + ", <br/><i>" + album + "</i></span><br/>" +
                               "<a class='songFeedbackPlayback 'href=" + preview + ">Play</a><br/>" +
-                              "</div>");
+                              "</div><br/>");
+
          //$("#results").append('<img class="playBackButton" src="playback.png" />');
         //<img class="playBackButton" src="playback.png" />
         //$(#results).append("<button class='songFeedbackPlayback' >Play</button>");
