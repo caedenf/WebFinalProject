@@ -266,8 +266,7 @@ function loadPastSongs() {
   var db = firebase.database().ref();
   db.on('value', function(snapshot) {
     var array = snapshot.val().songs;
-    console.log(array);
-    document.getElementById("pastSearches").innerHTML += array;
+    document.getElementById("pastSearches").innerHTML += array[0];
   });
 
 }
