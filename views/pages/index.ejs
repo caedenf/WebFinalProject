@@ -76,6 +76,10 @@
       #changeText:focus {
         outline: none;
       }
+
+      #searchButton {
+        text-align: center;
+      }
     </style>
   </head>
 
@@ -95,7 +99,7 @@
         <input type="text" name="" value="" id="changeText" placeholder="HAPPY">
         <span> songs.</span>
       </div>
-      <button onclick="searchSongs()" type="button" name="button" id="searchButton" style="text-align:center;">Search</button>
+      <button onclick="searchSongs()" type="button" name="button" id="searchButton">Search</button>
     </div>
 
     <div class="results" id="results" style="text-align:center;">
@@ -157,6 +161,11 @@
         document.getElementById("results").innerHTML += "Artist: " + artist + "<br/>";
         document.getElementById("results").innerHTML += "Album: " + album + "<br/>";
         document.getElementById("results").innerHTML += "Preview link: " + preview + "<br/>";
+        $("#results").append("<h1>123</h1>") //append the song title
+        $("#results").append() //append the song artist
+        $("#results").append() //append the song album
+        $("#results").append() //append the song play link
+
       }
     </script>
 
