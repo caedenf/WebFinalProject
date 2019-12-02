@@ -161,10 +161,10 @@
         document.getElementById("results").innerHTML += "Artist: " + artist + "<br/>";
         document.getElementById("results").innerHTML += "Album: " + album + "<br/>";
         document.getElementById("results").innerHTML += "Preview link: " + preview + "<br/>";
-        $("#results").append("<h2>" + title + "</h2>"); //append the song title
-        $("#results").append("<h4>By " + artist + ", <i>" + album + "</i></h4>"); //append the song artist and album
-        $("#results").append("<a href=" + preview + ">123</a>"); //append the song play link
-        //$("#results").append('<img class="playBackButton" src="playback.png" />');
+        $("#results").append("<span>" + title + "</span><br/>"); //append the song title
+        $("#results").append("<span>By " + artist + ", <i>" + album + "</i></span><br/>"); //append the song artist and album
+        $("#results").append("<a href=" + preview + ">123</a><br/>"); //append the song play link
+        $("#results").append('<img class="playBackButton" src="playback.png" />');
         //<img class="playBackButton" src="playback.png" />
 
       }
