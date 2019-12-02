@@ -271,7 +271,7 @@ function loadPastSongs() {
     var objectified = JSON.parse(stringified);
     array = objectified;
     console.log(array);
-    document.getElementById("pastSearches").innerHTML += array[Object.keys(array)[0]];
+    document.getElementById("pastSearches").innerHTML += array[Object.keys(array)[0]].title;
   });
 
 }
