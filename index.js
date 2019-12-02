@@ -1,9 +1,9 @@
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
-/*
-var admin = require("firebase-admin");
 
+var admin = require("firebase-admin");
+/*
 // Fetch the service account key JSON file contents
 var serviceAccount = require("web-final-e7da6-firebase-adminsdk-1isyb-e48b74e854-1.json");
 
