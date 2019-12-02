@@ -12,9 +12,10 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://web-final-e7da6.firebaseio.com"
 });
-/*
+
 // As an admin, the app has access to read and write all data, regardless of Security Rules
 var db = admin.database();
+/*
 var ref = db.ref("playlists/TvKUrtzg7rF0CTHjh5cN");
 ref.once("value", function(snapshot) {
   console.log(snapshot.val());
