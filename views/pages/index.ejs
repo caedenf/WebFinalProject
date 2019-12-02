@@ -168,7 +168,6 @@
 <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
 
     <script type="text/javascript">
-    loadPastSongs();
     
       var textDemoArr = ["EXCITING","PARTY","RELAXING","CALMING","HAPPY"];
       var counter = 0;
@@ -253,6 +252,7 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+      loadPastSongs();
   
   function writeSongData(title, artist, album, link) {
   firebase.database().ref(searchTerm + "/" + title).set({
