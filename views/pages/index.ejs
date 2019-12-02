@@ -198,6 +198,7 @@
         document.getElementById("results").innerHTML = "";
         for (var i = 0; i < songArray.length; i++) {
           printSong(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
+          writeSongData(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
         }
       }
 
@@ -247,6 +248,15 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+  
+  function writeSongData(title, artist, album, link) {
+  firebase.database().ref('songs/' + title).set({
+    artist: artist,
+    album: album,
+    link: link
+  });
+}
+
 </script>
   </body>
 </html>
