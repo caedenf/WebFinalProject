@@ -151,7 +151,7 @@
 
 
     <footer id="scroll">
-      <p style="text-align: center;">Scroll down to see what's popular on Moodify</p>
+      <p style="text-align: center;">Scroll down to see who's popular on Moodify</p>
       <div id="pastSearches" class="pastSearches">
         
       </div>
@@ -267,11 +267,11 @@ function loadPastSongs() {
   db.on('value', function(snapshot) {
     var array = [];
     var stringified = JSON.stringify(snapshot.val().songs);
-    console.log(stringified);
     var objectified = JSON.parse(stringified);
     array = objectified;
-    console.log(array);
-    document.getElementById("pastSearches").innerHTML += array[Object.keys(array)[0]].artist;
+    for (var i = 0; i < 10; i++) {
+      document.getElementById("pastSearches").innerHTML += array[Object.keys(array)[i]].artist;
+      }
   });
 
 }
