@@ -85,6 +85,7 @@
         width: 20%;
         background-color: green;
       }
+
       .songFeedbackTitle {
         font-weight: 600;
         font-size: 30px;
@@ -197,11 +198,11 @@
         // $("#results").append("<span class='songFeedbackArtist'>By " + artist + ", <i>" + album + "</i></span><br/>"); //append the song artist and album
         // $("#results").append("<a class='songFeedbackPlayback 'href=" + preview + ">Play</a><br/>");
 
-        $("#results").append("<div class='songFeedback'>
-                              <span class='songFeedbackTitle' >" + title + "</span><br/>
-                              <span class='songFeedbackArtist'>By " + artist + ", <i>" + album + "</i></span><br/>
-                              <a class='songFeedbackPlayback 'href=" + preview + ">Play</a><br/>
-                              </div>");
+        $("#results").append("<div class='songFeedback' >"+
+                              "<span class='songFeedbackTitle' >" + title + "</span><br/>"+
+                              "<span class='songFeedbackArtist'>By " + artist + ", <i>" + album + "</i></span><br/>" +
+                              "<a class='songFeedbackPlayback 'href=" + preview + ">Play</a><br/>" +
+                              "</div>");
          //$("#results").append('<img class="playBackButton" src="playback.png" />');
         //<img class="playBackButton" src="playback.png" />
         //$(#results).append("<button class='songFeedbackPlayback' >Play</button>");
