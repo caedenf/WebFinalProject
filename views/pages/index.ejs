@@ -151,7 +151,7 @@
 
 
     <footer id="scroll">
-      <p style="text-align: center;">Scroll down to see what's already been searched on Moodify</p>
+      <p style="text-align: center;">Scroll down to see what's popular on Moodify</p>
       <div id="pastSearches" class="pastSearches">
         
       </div>
@@ -265,7 +265,8 @@
 function loadPastSongs() {
   var db = firebase.database().ref();
   db.on('value', function(snapshot) {
-    console.log(snapshot.val());
+    var array = snapshot.val();
+    document.getElementById("pastSearches").innerHTML += array[0];
   });
 
 }
