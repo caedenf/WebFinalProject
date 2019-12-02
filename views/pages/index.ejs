@@ -105,7 +105,7 @@
       .songFeedbackPlayback {
         background-color: #000000;
         border: none;
-        border-radius: 3px;
+        border-radius: 10px;
         color: white;
         padding: 10px 30px;
         text-align: center;
@@ -118,6 +118,7 @@
 
       .songFeedbackPlayback:hover {
         background-color:#6e6e6e;
+        transition: 0.3s;
       }
     </style>
   </head>
@@ -137,12 +138,15 @@
         <!-- <span id="changeText">HAPPY</span> &nbsp -->
         <input type="text" name="" value="" id="changeText" placeholder="HAPPY">
         <span> songs.</span>
+
+        <button onclick="searchSongs()" type="button" name="button" id="searchButton">Search</button>
+        
+        <div class="results" id="results">
+        </div>
       </div>
-      <button onclick="searchSongs()" type="button" name="button" id="searchButton">Search</button>
     </div>
 
-    <div class="results" id="results">
-    </div>
+
 
     <footer id="scroll">
       <p style="text-align: center;">Scroll down to see what’s popular on Moodify</p>
