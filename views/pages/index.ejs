@@ -42,13 +42,15 @@
       }
       #logoName {
         font-weight: 700;
+        font-size: 30px;
       }
       #about {
         float: right;
-        margin-top: 15px;
+        margin-top: 20px;
         margin-right: 3%;
         font-weight: 500;
       }
+
       .mainSentence {
         font-size: 3.5em;
         font-weight: 700;
@@ -56,11 +58,6 @@
         text-align: center;
       }
 
-      #scroll {
-        margin-top: 100px;
-        text-align: center;
-        font-weight: 500;
-      }
 
       #changeText {
         background-color: transparent;
@@ -88,9 +85,9 @@
       }
 
       #searchButton {
-        background-color: #000000;
+        background-color: #ffffff;
         border: none;
-        color: white;
+        color: #000000;
         text-align: center;
         text-decoration: none;
         font-size: 20px;
@@ -112,7 +109,7 @@
 
       .songFeedback {
         width: 27%;
-        background-color: rgba(255, 255, 255, 0.3);
+        background-color: rgba(255, 255, 255, 0.8);
         text-align: center;
         padding: 15px 15px;
         margin:0 auto;
@@ -154,9 +151,24 @@
         transition: 0.3s;
       }
 
+
+      #scroll {
+        background-color: rgba(255, 255, 255, 1);
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 10px;
+        font-weight: 500;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+
+
       #pastSearches {
         display: flex;
         width: 100%;
+        padding-bottom: 5px;
       }
 
       .pastSongFeedback {
@@ -167,31 +179,20 @@
         padding-top: 5px;
       }
 
-      .pastSongFeedback:hover {
-        box-shadow: 4px 5px 6px #417a22, -4px 5px 6px #417a22;
-        transition: 0.5s;
-      }
-
-      #scroll {
-        background-color: rgba(255, 255, 255, 0.3);
-        padding-top: 5px;
-        padding-bottom: 10px;
-        font-size: 15px;
-      }
     </style>
   </head>
 
   <body>
     <nav>
       <div class="" style="display: inline-block; margin-left: 3%;">
-        <a href="#" style="font-size: 40px;" id="logoName">Moodify</a> <br>
-        <span style="font-weight: 500; font-size: 15px;">Listen With Your Heart</span>
+        <a href="#" id="logoName">Moodify</a> <br>
+        <span style="font-weight: 500; font-size: 11px;">Listen With Your Heart</span>
       </div>
       <a href="#" id="about">About Us</a>
     </nav>
 
-    <div class="mainSentence" id="mainSearchSentence" name="MainSearchSentence">
-      <div style="text-align:center;">
+    <div class="mainSentence">
+      <div style="text-align:center;" id="mainSearchSentence">
         <span>I want to listen to </span>
         <!-- <span id="changeText">HAPPY</span> &nbsp -->
         <input type="text" name="" value="" id="changeText" placeholder="HAPPY">
@@ -206,6 +207,17 @@
     <script type="text/javascript">
       var position = document.getElementById("mainSearchSentence").offsetTop;
       console.log(position);
+
+      container = document.querySelector('#mainSearchSentence');
+      console.log(container.scrollTop);
+
+      setInterval(function(){
+        var position = document.getElementById("mainSearchSentence").offsetTop;
+        console.log(position);
+        container = document.querySelector('#mainSearchSentence');
+        console.log(container.scrollTop);
+      }, 1000);
+
 
     </script>
 
