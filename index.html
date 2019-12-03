@@ -35,6 +35,7 @@
         width: 100%;
         z-index:20;
         background-color: rgba(255, 255, 255, 1);
+        box-shadow: 1px 1px 5px #7ebf5a;
       }
       a {
         text-decoration: none;
@@ -142,7 +143,7 @@
         text-decoration: none;
         display: inline-block;
         font-size: 15px;
-        margin: 2px 2px;
+        margin: 4px 2px;
         cursor: pointer;
       }
 
@@ -205,18 +206,10 @@
     </div>
 
     <script type="text/javascript">
-      var position = document.getElementById("mainSearchSentence").offsetTop;
-      console.log(position);
 
-      container = document.querySelector('#mainSearchSentence');
-      console.log(container.scrollTop);
+      var count = 0
 
-      setInterval(function(){
-        var position = document.getElementById("mainSearchSentence").offsetTop;
-        console.log(position);
-        container = document.querySelector('#mainSearchSentence');
-        console.log(container.scrollTop);
-      }, 1000);
+
 
 
     </script>
@@ -260,10 +253,16 @@
         }
       }
 
+      $("#changeText").keypress(function() {
+          var searchParam = document.getElementById("changeText").value;
+          makeRequest(searchParam);
+      });
+      //no longer need search button
+
       function searchSongs() {
         var searchParam = document.getElementById("changeText").value;
         makeRequest(searchParam);
-      }
+      };
 
       function makeRequest(searchTerm) {
         var data = null;
