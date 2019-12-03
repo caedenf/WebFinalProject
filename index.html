@@ -253,7 +253,7 @@
         }
       }
 
-      $("#changeText").keypress(function() {
+      $("#changeText").keydown(function() {
           var searchParam = document.getElementById("changeText").value;
           makeRequest(searchParam);
       });
