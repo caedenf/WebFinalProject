@@ -117,8 +117,8 @@
       }
 
       .songFeedback:hover {
-        box-shadow: 4px 5px 6px #417a22, -4px 5px 6px #417a22;
-        transition: 0.5s;
+        box-shadow: -7px 15px 30px rgba(0, 0, 0, 0.6);
+        transition: 0.2s;
       }
 
       .songFeedbackTitle {
@@ -289,6 +289,7 @@
           printSong(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
           writeSongData(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
         }
+        document.getElementById("results").innerHTML += "<br/><br/><br/><br/>";
       }
 
       function printSong(title, artist, album, preview) {
@@ -354,7 +355,7 @@ function loadPastSongs() {
   });
 
 }
-//test
+
 </script>
   </body>
 </html>
