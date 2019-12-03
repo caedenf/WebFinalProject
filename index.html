@@ -32,10 +32,13 @@
         font-family: 'Rubik', sans-serif;
       }
       nav {
-        margin-top:2%;
+        padding-top: 15px;
+        padding-bottom: 15px;
         position: fixed;
         top:0;
         width: 100%;
+        z-index:20;
+        background-color:#ffffff;
       }
       a {
         text-decoration: none;
@@ -58,8 +61,9 @@
       }
 
       #scroll {
-        margin-top: 20%;
+        margin-top: 100px;
         text-align: center;
+        font-weight: 500;
       }
 
       #changeText {
@@ -91,7 +95,6 @@
         background-color: #000000;
         border: none;
         color: white;
-        padding: 7px 50px;
         text-align: center;
         text-decoration: none;
         font-size: 20px;
@@ -99,6 +102,8 @@
         cursor: pointer;
         font-weight: 600;
         font-family: 'Rubik', sans-serif;
+        border-radius: 0px;
+        display: inline-block;
       }
 
       #searchButton:hover {
@@ -152,6 +157,11 @@
         background-color:#6e6e6e;
         transition: 0.3s;
       }
+
+      #pastSearches {
+        display: flex;
+        width: 100%;
+      }
     </style>
   </head>
 
@@ -184,7 +194,7 @@
 
 
     <footer id="scroll">
-      <p style="text-align: center;">Scroll down to see who's popular on Moodify</p>
+      <p style="text-align: center;">Recent Popular Artists on Moodify</p>
       <div id="pastSearches" class="pastSearches">
 
       </div>
@@ -306,7 +316,8 @@ function loadPastSongs() {
     document.getElementById("pastSearches").innerHTML = "";
     for (var i = 0; i < 10; i++) {
       var rand = Math.floor((Math.random() * length) + 1);
-      document.getElementById("pastSearches").innerHTML += array[Object.keys(array)[rand]].artist + "<br/>";
+      $("#pastSearches").append("<p class='songFeedback'>" + array[Object.keys(array)[rand]].artist + "</p><br/>");
+      //document.getElementById("pastSearches").innerHTML += array[Object.keys(array)[rand]].artist + "<br/>";
       }
   });
 
