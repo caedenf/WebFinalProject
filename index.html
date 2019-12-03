@@ -288,6 +288,7 @@
         document.getElementById("results").innerHTML = "";
         for (var i = 0; i < songArray.length; i++) {
           printSong(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
+          console.log(songArray[i].preview);
           writeSongData(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
         }
         document.getElementById("results").innerHTML += "<br/><br/><br/><br/>";
