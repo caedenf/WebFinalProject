@@ -14,8 +14,6 @@
         crossorigin="anonymous">
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
-
 
     <style media="screen">
       html {
@@ -53,15 +51,12 @@
         margin-right: 3%;
         font-weight: 500;
       }
-
       .mainSentence {
         font-size: 3.5em;
         font-weight: 700;
         margin-top: 23%;
         text-align: center;
       }
-
-
       #changeText {
         background-color: transparent;
         border: none;
@@ -72,21 +67,17 @@
         width: 350px;
         text-align: center;
       }
-
       #changeText::placeholder {
         color: #000000;
         text-align: center;
       }
-
       #changeText:focus::placeholder {
         /* color: #949494; */
         opacity: 0.5;
       }
-
       #changeText:focus {
         outline: none;
       }
-
       #searchButton {
         background-color: #ffffff;
         border: none;
@@ -101,16 +92,13 @@
         border-radius: 0px;
         display: inline-block;
       }
-
       #searchButton:hover {
         transition: 0.3s;
       }
-
       .results {
         text-align: center;
         margin-bottom: 30px;
       }
-
       .songFeedback {
         width: 27%;
         background-color: rgba(255, 255, 255, 0.8);
@@ -118,24 +106,20 @@
         padding: 15px 15px;
         margin:0 auto;
       }
-
       .songFeedback:hover {
         box-shadow: -7px 15px 30px rgba(0, 0, 0, 0.6);
         transition: 0.2s;
       }
-
       .songFeedbackTitle {
         font-weight: 600;
         font-size: 30px;
         text-align: center;
       }
-
       .songFeedbackArtist {
         font-weight: 500;
         font-size: 15px;
         text-align: center;
       }
-
       .songFeedbackPlayback {
         background-color: #000000;
         border: none;
@@ -149,13 +133,10 @@
         margin: 4px 2px;
         cursor: pointer;
       }
-
       .songFeedbackPlayback:hover {
         background-color:#6e6e6e;
         transition: 0.3s;
       }
-
-
       #scroll {
         background-color: rgba(255, 255, 255, 1);
         padding-top: 5px;
@@ -167,14 +148,11 @@
         bottom: 0;
         width: 100%;
       }
-
-
       #pastSearches {
         display: flex;
         width: 100%;
         padding-bottom: 5px;
       }
-
       .pastSongFeedback {
         width: 27%;
         text-align: center;
@@ -191,7 +169,7 @@
     bottom: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.03);
-
+    
     width: 100%;
     z-index: 99999;
     opacity:0;
@@ -230,8 +208,7 @@
 }
 .close:hover {
     background: #00d9ff;
-  }
-
+}
     </style>
   </head>
 
@@ -241,6 +218,7 @@
         <a href="#" id="logoName">Moodify</a> <br>
         <span style="font-weight: 500; font-size: 11px;">Listen With Your Heart</span>
       </div>
+      
       <a href="#about" style="float: right; margin-top: 20px; margin-right: 3%;font-weight: 500;">About Us</a>
 
       <div id="about" class="modalDialog">
@@ -268,15 +246,8 @@
       </div>
     </div>
 
-
-
     <script type="text/javascript">
-
       var count = 0
-
-
-
-
     </script>
 
     <div class="results" id="results">
@@ -302,12 +273,10 @@
 <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
 
     <script type="text/javascript">
-
       var textDemoArr = ["EXCITING","PARTY","RELAXING","CALMING","HAPPY"];
       var counter = 0;
       // var element = document.getElementById('changeText');
       var inst = setInterval(change, 3000);
-
       function change () {
         // element.innerHTML = textDemoArr[counter];
         // element.style.transitionDuration = "1s";
@@ -317,17 +286,15 @@
           counter = 0;
         }
       }
-
-      $("#changeText").keyup(function() {
-          searchSongs();
+      $("#changeText").keydown(function() {
+          var searchParam = document.getElementById("changeText").value;
+          makeRequest(searchParam);
       });
       //no longer need search button
-
       function searchSongs() {
         var searchParam = document.getElementById("changeText").value;
         makeRequest(searchParam);
       };
-
       function makeRequest(searchTerm) {
         var data = null;
         var xhr = new XMLHttpRequest();
@@ -342,9 +309,7 @@
         xhr.setRequestHeader("x-rapidapi-host", "deezerdevs-deezer.p.rapidapi.com");
         xhr.setRequestHeader("x-rapidapi-key", "ed0387ed35msh68081b71c8d3a3cp129c22jsne333d255819e");
         xhr.send(data);
-        console.log(data);
       }
-
       function makePlaylist(data) {
         var songArray = [];
         var objectified = JSON.parse(data);
@@ -352,12 +317,10 @@
         document.getElementById("results").innerHTML = "";
         for (var i = 0; i < songArray.length; i++) {
           printSong(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
-          console.log(songArray[i].preview);
           writeSongData(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
         }
         document.getElementById("results").innerHTML += "<br/><br/><br/><br/>";
       }
-
       function printSong(title, artist, album, preview) {
         // document.getElementById("results").innerHTML += "Title: " + title + "<br/>";
         // document.getElementById("results").innerHTML += "Artist: " + artist + "<br/>";
@@ -366,20 +329,15 @@
         // $("#results").append("<span class='songFeedbackTitle' >" + title + "</span><br/>"); //append the song title
         // $("#results").append("<span class='songFeedbackArtist'>By " + artist + ", <i>" + album + "</i></span><br/>"); //append the song artist and album
         // $("#results").append("<a class='songFeedbackPlayback 'href=" + preview + ">Play</a><br/>");
-
         $("#results").append("<div class='songFeedback' style='text-align:center;'>"+
                               "<span class='songFeedbackTitle' >" + title + "</span><br/>"+
                               "<span class='songFeedbackArtist'>By " + artist + ", <br/><i>" + album + "</i></span><br/>" +
                               "<a class='songFeedbackPlayback 'href=" + preview + ">Play</a><br/>" +
                               "</div><br/>");
-
          //$("#results").append('<img class="playBackButton" src="playback.png" />');
         //<img class="playBackButton" src="playback.png" />
         //$(#results).append("<button class='songFeedbackPlayback' >Play</button>");
-
-
       }
-
   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyCI_ttcCTEkKBiAY2eg7dMstX0Wqp6hFG8",
@@ -395,7 +353,6 @@
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
       loadPastSongs();
-
   function writeSongData(title, artist, album, link) {
   firebase.database().ref("songs/" + title).set({
     artist: artist,
@@ -403,7 +360,6 @@
     link: link
   });
 }
-
 function loadPastSongs() {
   var db = firebase.database().ref();
   db.on('value', function(snapshot) {
@@ -419,9 +375,7 @@ function loadPastSongs() {
       //document.getElementById("pastSearches").innerHTML += array[Object.keys(array)[rand]].artist + "<br/>";
       }
   });
-
 }
-
 </script>
   </body>
 </html>

@@ -183,6 +183,55 @@
         padding-top: 5px;
       }
 
+      .modalDialog {
+    position: fixed;
+    font-family: 'Rubik', sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.03);
+
+    width: 100%;
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+.modalDialog > div {
+    width: 55%;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom right, #acb6e5, #86fde8);
+    opacity: 0.97;
+}
+.close {
+    background: #FFFFFF;
+    color: #606061;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+}
+.close:hover {
+    background: #00d9ff;
+  }
+
     </style>
   </head>
 
@@ -192,7 +241,18 @@
         <a href="#" id="logoName">Moodify</a> <br>
         <span style="font-weight: 500; font-size: 11px;">Listen With Your Heart</span>
       </div>
-      <a href="#" id="about">About Us</a>
+      <a href="#about" style="float: right; margin-top: 20px; margin-right: 3%;font-weight: 500;">About Us</a>
+
+      <div id="about" class="modalDialog">
+          <div> <a href="#close" title="Close" class="close">X</a>
+
+                <h2 style="text-align: center; font-size: 100px;font-weight: 500;">About Us</h2>
+
+              <p style="text-align: center; font-size: 30px;">We care about music. We care about you.</p>
+
+              <p style="text-align: center; font-style: italic;font-weight: 100" >Moodify was founded in 2019 by four Tufts University undergrands with two things in common: a love for music and a passion for shortcuts. Together, they found an easy way to do a great thing. Quick access to the best songs for every mood, Moodify wants you to listen with your heart. </p>
+          </div>
+      </div>
     </nav>
 
     <div class="mainSentence">
@@ -282,6 +342,7 @@
         xhr.setRequestHeader("x-rapidapi-host", "deezerdevs-deezer.p.rapidapi.com");
         xhr.setRequestHeader("x-rapidapi-key", "ed0387ed35msh68081b71c8d3a3cp129c22jsne333d255819e");
         xhr.send(data);
+        console.log(data);
       }
 
       function makePlaylist(data) {
