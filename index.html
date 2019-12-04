@@ -258,9 +258,8 @@
         }
       }
 
-      $("#changeText").keydown(function() {
-          var searchParam = document.getElementById("changeText").value;
-          makeRequest(searchParam);
+      $("#changeText").keyup(function() {
+          searchSongs();
       });
       //no longer need search button
 
