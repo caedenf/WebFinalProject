@@ -1,3 +1,5 @@
+<?php
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -422,3 +424,5 @@ function loadPastSongs() {
 </script>
   </body>
 </html>
+
+?>
