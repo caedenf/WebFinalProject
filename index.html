@@ -248,6 +248,10 @@
     background: #00d9ff;
   }
 
+.emoji-emojis:hover {
+  cursor: pointer;
+}
+
     </style>
   </head>
 
@@ -285,23 +289,76 @@
 
         <!-- give some emoji examples for fun -->
         <div class="emojis">
-          <span id="happy"> 😃</span>
-          <span id="ironic">🙃</span>
-          <span id="kiss">  😘</span>
-          <span id="kidding">😛</span>
-          <span id="notHappy">😐</span>
-          <span id="deadly">💀</span>
-          <span id="sad">😥</span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+          <span id="happy" class="emoji-emojis"> 😃</span>
+          <span id="ironic" class="emoji-emojis">🙃</span>
+          <span id="love" class="emoji-emojis">  ❤️</span>
+          <span id="kidding" class="emoji-emojis">😛</span>
+          <span id="whatever" class="emoji-emojis">😐</span>
+          <span id="deadly" class="emoji-emojis">💀</span>
+          <span id="sad" class="emoji-emojis">😥</span>
+          <span class="emoji-emojis" id="family">👪</span>
+          <span class="emoji-emojis" id="cool">😎</span> ️
+          <span class="emoji-emojis" id="summer">🏝</span>
+          <span class="emoji-emojis" id="winter">❄️</span>
         </div>
+
+        <script type="text/javascript">
+          $("#happy").click(function() {
+            console.log(this.id);
+            $("#changeText").val(this.id);
+            makeRequest($("#changeText").val());
+          });
+          $("#ironic").click(function() {
+            console.log(this.id);
+            $("#changeText").val(this.id);
+            makeRequest($("#changeText").val());
+          });
+          $("#love").click(function() {
+            console.log(this.id);
+            $("#changeText").val(this.id);
+            makeRequest($("#changeText").val());
+          });
+          $("#kidding").click(function() {
+            console.log(this.id);
+            $("#changeText").val(this.id);
+            makeRequest($("#changeText").val());
+          });
+          $("#whatever").click(function() {
+            console.log(this.id);
+            $("#changeText").val(this.id);
+            makeRequest($("#changeText").val());
+          });
+          $("#deadly").click(function() {
+            console.log(this.id);
+            $("#changeText").val(this.id);
+            makeRequest($("#changeText").val());
+          });
+          $("#sad").click(function() {
+            console.log(this.id);
+            $("#changeText").val(this.id);
+            makeRequest($("#changeText").val());
+          });
+          $("#family").click(function() {
+            console.log(this.id);
+            $("#changeText").val(this.id);
+            makeRequest($("#changeText").val());
+          });
+          $("#cool").click(function() {
+            console.log(this.id);
+            $("#changeText").val(this.id);
+            makeRequest($("#changeText").val());
+          });
+          $("#summer").click(function() {
+            console.log(this.id);
+            $("#changeText").val(this.id);
+            makeRequest($("#changeText").val());
+          });
+          $("#winter").click(function() {
+            console.log(this.id);
+            $("#changeText").val(this.id);
+            makeRequest($("#changeText").val());
+          });
+        </script>
 
         <!-- <button onclick="searchSongs()" type="button" name="button" id="searchButton">Search</button> -->
         <button class="mdc-button mdc-button--raised" onclick="searchSongs()" type="button" name="button" id="searchButton">
@@ -356,7 +413,7 @@
 
       function searchSongs() {
         var searchParam = document.getElementById("changeText").value;
-        makeRequest(searchParam);
+            makeRequest(searchParam);
       };
 
       function makeRequest(searchTerm) {
