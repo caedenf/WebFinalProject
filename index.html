@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Moodify -- Listen with your heart</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap');
+    </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
+
+
+    <style media="screen">
+
+    @media screen and (max-width: 375px) {
+      .mainSentence {
+        font-size: 3.3em;
+        font-weight: 700;
+        margin-top: 70px;
+        text-align: center;
+      }
+
+      body {
+        background-image: linear-gradient(to bottom right, #000000, #78FFD6);
+      }
+    }
+      html {
+        height: 100%;
+      }
+      body {
+        background-image: linear-gradient(to bottom right, #A8FF78, #78FFD6);
+        height: 100%;
+        margin: 0;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: 'Rubik', sans-serif;
+      }
+      nav {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        position: fixed;
+        top:0;
+        width: 100%;
+        z-index:20;
+        background-color: rgba(255, 255, 255, 1);
+        box-shadow: 1px 1px 5px #7ebf5a;
+      }
+      a {
+        text-decoration: none;
+        color: #000000;
+      }
+      #logoName {
+        font-weight: 700;
+        font-size: 30px;
+      }
+      #about {
+        float: right;
+        margin-top: 15px;
+        margin-right: 3%;
+        font-weight: 500;
+      }
+
+      .mainSentence {
+        font-size: 3.3em;
+        font-weight: 700;
+        margin-top: 15%;
+        text-align: center;
+      }
+
+
+      #changeText {
+        background-color: transparent;
+        border: none;
+        /* border-bottom: 3px solid #000000; */
+        font-size: 10vw;
+        font-family: 'Rubik', sans-serif;
+        font-weight: 700;
+        width: 60%;
+        text-align: center;
+      }
+
+      #changeText::placeholder {
+        color: #000000;
+        text-align: center;
+      }
+
+      #changeText:focus::placeholder {
+        /* color: #949494; */
+        opacity: 0.5;
+      }
+
+      #changeText:focus {
+        outline: none;
+      }
+
+      #searchButton {
+        background-color: #ffffff;
+        border: none;
+        color: #000000;
+        text-align: center;
+        text-decoration: none;
+        font-size: 20px;
+        margin: 20px 15px;
+        cursor: pointer;
+        font-weight: 600;
+        font-family: 'Rubik', sans-serif;
+        border-radius: 0px;
+        display: inline-block;
+      }
+
+      #searchButton:hover {
+        transition: 0.3s;
+      }
+
+      .results {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .songFeedback {
+        width: 27%;
+        background-color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+        padding: 15px 15px;
+        margin:0 auto;
+      }
+
+      .songFeedback:hover {
+        box-shadow: -7px 15px 30px rgba(0, 0, 0, 0.6);
+        transition: 0.2s;
+      }
+
+      .songFeedbackTitle {
+        font-weight: 600;
+        font-size: 30px;
+        text-align: center;
+      }
+
+      .songFeedbackArtist {
+        font-weight: 500;
+        font-size: 15px;
+        text-align: center;
+      }
+
+      .songFeedbackPlayback {
+        background-color: #000000;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        padding: 10px 30px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+
+      .songFeedbackPlayback:hover {
+        background-color:#6e6e6e;
+        transition: 0.3s;
+      }
+
+
+      #scroll {
+        background-color: rgba(255, 255, 255, 1);
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 10px;
+        font-weight: 500;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+
+
+      #pastSearches {
+        display: flex;
+        width: 100%;
+        padding-bottom: 5px;
+      }
+
+      .pastSongFeedback {
+        width: 27%;
+        text-align: center;
+        margin:0 auto;
+        font-weight: 500;
+        padding-top: 5px;
+      }
+
+      .modalDialog {
+    position: fixed;
+    font-family: 'Rubik', sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* background: rgba(0, 0, 0, 0); */
+
+    width: 100%;
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 200ms ease-in;
+    pointer-events: none;
+}
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+.modalDialog > div {
+    width: 55%;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    /* border-radius: 10px; */
+    /* background-image: linear-gradient(to bottom right, #acb6e5, #86fde8); */
+    background-color: #ffffff;
+    opacity: 1;
+    box-shadow: 1px 1px 5px #7ebf5a;
+
+}
+.close {
+    background: #FFFFFF;
+    color: #606061;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+}
+.close:hover {
+    background: #00d9ff;
+  }
+
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <div class="" style="display: inline-block; margin-left: 3%;">
+        <a href="#" id="logoName">Moodify</a> <br>
+        <span style="font-weight: 500; font-size: 11px;">Listen With Your Heart</span>
+      </div>
+      <a href="#about" style="float: right; margin-top: 20px; margin-right: 3%;font-weight: 500;">About Us</a>
+
+      <div id="about" class="modalDialog">
+          <div> <a href="#close" title="Close" class="close">X</a>
+
+                <h2 style="text-align: center; font-size: 70px;font-weight: 500;">About Us</h2>
+
+              <p style="text-align: center; font-size: 30px;">We care about music. We care about you.</p>
+
+              <p style="text-align: center; font-style: italic;font-weight: 100" >
+                Moodify was founded in 2019 by four Tufts University undergrads with two things in common:
+                a love for music and a passion for shortcuts.
+                Together, they found an easy way to do a great thing.
+                Quick access to the best songs for every mood, Moodify wants you to listen with your heart. </p>
+          </div>
+      </div>
+    </nav>
+
+    <div class="mainSentence">
+
+      <div style="text-align:center;" id="mainSearchSentence">
+        <span>Gimme A Word</span> <br>
+        <!-- <span id="changeText">HAPPY</span> &nbsp -->
+        <input type="text" name="" value="" id="changeText" placeholder="HAPPY">
+
+
+        <!-- give some emoji examples for fun -->
+        <div class="emojis">
+          <span id="happy"> 😃</span>
+          <span id="ironic">🙃</span>
+          <span id="kiss">  😘</span>
+          <span id="kidding">😛</span>
+          <span id="notHappy">😐</span>
+          <span id="deadly">💀</span>
+          <span id="sad">😥</span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <!-- <button onclick="searchSongs()" type="button" name="button" id="searchButton">Search</button> -->
+        <button class="mdc-button mdc-button--raised" onclick="searchSongs()" type="button" name="button" id="searchButton">
+          <span class="mdc-button__ripple"></span>Search</button>
+      </div>
+    </div>
+
+
+    <div class="results" id="results">
+    </div>
+
+
+
+    <footer id="scroll">
+      <p style="text-align: center;font-weight: 600;">Recent Popular Artists on Moodify</p>
+      <div id="pastSearches" class="pastSearches">
+
+      </div>
+    </footer>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+
+    <script type="text/javascript">
+
+      var textDemoArr = ["Kalid","PARTY","RELAXING","CALMING","HAPPY"];
+      var counter = 0;
+      // var element = document.getElementById('changeText');
+      var inst = setInterval(change, 3000);
+
+      function change () {
+        // element.innerHTML = textDemoArr[counter];
+        // element.style.transitionDuration = "1s";
+        $('#changeText').attr('placeholder',textDemoArr[counter]);
+        counter++;
+        if (counter >= textDemoArr.length) {
+          counter = 0;
+        }
+      }
+
+      $("#changeText").keyup(function() {
+          searchSongs();
+      });
+      //no longer need search button
+
+      function searchSongs() {
+        var searchParam = document.getElementById("changeText").value;
+        makeRequest(searchParam);
+      };
+
+      function makeRequest(searchTerm) {
+        var data = null;
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        xhr.addEventListener("readystatechange", function () {
+      	  if (this.readyState === this.DONE) {
+      		  makePlaylist(this.responseText);
+      	  }
+        });
+        var searchStr = "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + searchTerm;
+        xhr.open("GET", searchStr);
+        xhr.setRequestHeader("x-rapidapi-host", "deezerdevs-deezer.p.rapidapi.com");
+        xhr.setRequestHeader("x-rapidapi-key", "ed0387ed35msh68081b71c8d3a3cp129c22jsne333d255819e");
+        xhr.send(data);
+        console.log(data);
+      }
+
+      function makePlaylist(data) {
+        var songArray = [];
+        var objectified = JSON.parse(data);
+        songArray = objectified.data;
+        document.getElementById("results").innerHTML = "";
+        for (var i = 0; i < songArray.length; i++) {
+          printSong(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
+          console.log(songArray[i].preview);
+          writeSongData(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
+        }
+        document.getElementById("results").innerHTML += "<br/><br/><br/><br/>";
+      }
+
+      function printSong(title, artist, album, preview) {
+        // document.getElementById("results").innerHTML += "Title: " + title + "<br/>";
+        // document.getElementById("results").innerHTML += "Artist: " + artist + "<br/>";
+        // document.getElementById("results").innerHTML += "Album: " + album + "<br/>";
+        // document.getElementById("results").innerHTML += "Preview link: " + preview + "<br/>";
+        // $("#results").append("<span class='songFeedbackTitle' >" + title + "</span><br/>"); //append the song title
+        // $("#results").append("<span class='songFeedbackArtist'>By " + artist + ", <i>" + album + "</i></span><br/>"); //append the song artist and album
+        // $("#results").append("<a class='songFeedbackPlayback 'href=" + preview + ">Play</a><br/>");
+
+        $("#results").append("<div class='songFeedback' style='text-align:center;'>"+
+                              "<span class='songFeedbackTitle' >" + title + "</span><br/>"+
+                              "<span class='songFeedbackArtist'>By " + artist + ", <br/><i>" + album + "</i></span><br/>" +
+                              "<a class='songFeedbackPlayback 'href=" + preview + ">Play</a><br/>" +
+                              "</div><br/>");
+
+         //$("#results").append('<img class="playBackButton" src="playback.png" />');
+        //<img class="playBackButton" src="playback.png" />
+        //$(#results).append("<button class='songFeedbackPlayback' >Play</button>");
+
+
+      }
+
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCI_ttcCTEkKBiAY2eg7dMstX0Wqp6hFG8",
+    authDomain: "web-final-e7da6.firebaseapp.com",
+    databaseURL: "https://web-final-e7da6.firebaseio.com",
+    projectId: "web-final-e7da6",
+    storageBucket: "web-final-e7da6.appspot.com",
+    messagingSenderId: "405454676493",
+    appId: "1:405454676493:web:a07767c389dd38d7492b44",
+    measurementId: "G-4M19418XW6"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+      loadPastSongs();
+
+  function writeSongData(title, artist, album, link) {
+  firebase.database().ref("songs/" + title).set({
+    artist: artist,
+    album: album,
+    link: link
+  });
+}
+
+function loadPastSongs() {
+  var db = firebase.database().ref();
+  db.on('value', function(snapshot) {
+    var array = [];
+    var stringified = JSON.stringify(snapshot.val().songs);
+    var objectified = JSON.parse(stringified);
+    array = objectified;
+    var length = Object.keys(array).length-1;
+    document.getElementById("pastSearches").innerHTML = "";
+    for (var i = 0; i < 10; i++) {
+      var rand = Math.floor((Math.random() * length) + 1);
+      $("#pastSearches").append("<p class='pastSongFeedback'>" + array[Object.keys(array)[rand]].artist + "</p><br/>");
+      //document.getElementById("pastSearches").innerHTML += array[Object.keys(array)[rand]].artist + "<br/>";
+      }
+  });
+
+}
+
+</script>
+  </body>
+</html>
