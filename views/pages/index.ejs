@@ -252,13 +252,23 @@
   cursor: pointer;
 }
 
-#audioPlayer {
+/* #audioPlayer {
   position: fixed;
   right:3%;
   bottom: 15%;
   z-index: 15;
   border-radius: 25px;
   box-shadow: -7px 10px 30px rgba(0, 0, 0, 0.3);
+} */
+
+.audioPlayerList {
+  margin-top: 2px;
+  border-radius: 25px;
+  box-shadow: 1px 1px 5px #7ebf5a;
+}
+
+.audioPlayerList:hover {
+  box-shadow: 2px 3px 8px #7ebf5a;
 
 }
 
@@ -471,7 +481,7 @@
                               "<span class='songFeedbackTitle' >" + title + "</span><br/>"+
                               "<span class='songFeedbackArtist'>By " + artist + ", <br/><i>" + album + "</i></span><br/>" +
                               // "<span class='songFeedbackPlayback' onclick='transferURL()' data-url=" + preview + ">Play</span><br/>" +
-                              "<audio controls> <source src=" + preview + "> </audio>" +
+                              "<audio controls class='audioPlayerList'> <source src=" + preview + "> </audio>" +
                               "</div><br/>");
 
          //$("#results").append('<img class="playBackButton" src="playback.png" />');
