@@ -206,7 +206,7 @@
     /* background: rgba(0, 0, 0, 0); */
 
     width: 100%;
-    z-index: 99999;
+    z-index: 10;
     opacity:0;
     -webkit-transition: opacity 400ms ease-in;
     -moz-transition: opacity 400ms ease-in;
@@ -250,6 +250,16 @@
 
 .emoji-emojis:hover {
   cursor: pointer;
+}
+
+#audioPlayer {
+  position: fixed;
+  right:3%;
+  bottom: 15%;
+  z-index: 15;
+  border-radius: 25px;
+  box-shadow: -7px 10px 30px rgba(0, 0, 0, 0.3);
+
 }
 
     </style>
@@ -366,9 +376,10 @@
       </div>
     </div>
 
-
     <div class="results" id="results">
     </div>
+
+
 
 
 
@@ -440,7 +451,7 @@
         document.getElementById("results").innerHTML = "";
         for (var i = 0; i < songArray.length; i++) {
           printSong(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
-          console.log(songArray[i].preview);
+          // console.log(songArray[i].preview);
           writeSongData(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
         }
         document.getElementById("results").innerHTML += "<br/><br/><br/><br/>";
@@ -455,17 +466,17 @@
         // $("#results").append("<span class='songFeedbackArtist'>By " + artist + ", <i>" + album + "</i></span><br/>"); //append the song artist and album
         // $("#results").append("<a class='songFeedbackPlayback 'href=" + preview + ">Play</a><br/>");
 
+
         $("#results").append("<div class='songFeedback' style='text-align:center;'>"+
                               "<span class='songFeedbackTitle' >" + title + "</span><br/>"+
                               "<span class='songFeedbackArtist'>By " + artist + ", <br/><i>" + album + "</i></span><br/>" +
-                              "<a class='songFeedbackPlayback 'href=" + preview + ">Play</a><br/>" +
+                              // "<span class='songFeedbackPlayback' onclick='transferURL()' data-url=" + preview + ">Play</span><br/>" +
+                              "<audio controls> <source src=" + preview + "> </audio>" +
                               "</div><br/>");
 
          //$("#results").append('<img class="playBackButton" src="playback.png" />');
         //<img class="playBackButton" src="playback.png" />
         //$(#results).append("<button class='songFeedbackPlayback' >Play</button>");
-
-
       }
 
   // Your web app's Firebase configuration
