@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta charset="utf-8">
+    <link href="swapimagesonhover.css" rel="stylesheet" type="text/css"/>
+      <script src="swapimagesonhover.js" type="text/javascript"></script>
     <title>Moodify -- Listen with your heart</title>
     <style>
-      @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap');
+     @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap');
     </style>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-        crossorigin="anonymous">
+       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+       crossorigin="anonymous">
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
+
 
 
     <style media="screen">
@@ -63,7 +68,7 @@
       }
       #about {
         float: right;
-        margin-top: 15px;
+        /* margin-top: 15px; */
         margin-right: 3%;
         font-weight: 500;
       }
@@ -171,7 +176,6 @@
         transition: 0.3s;
       }
 
-
       #scroll {
         background-color: rgba(255, 255, 255, 1);
         padding-top: 5px;
@@ -206,14 +210,14 @@
     right: 0;
     bottom: 0;
     left: 0;
-    /* background: rgba(0, 0, 0, 0); */
+    background: rgba(0, 0, 0, 0.3);
 
     width: 100%;
-    z-index: 10;
+    z-index: 99999;
     opacity:0;
     -webkit-transition: opacity 400ms ease-in;
     -moz-transition: opacity 400ms ease-in;
-    transition: opacity 200ms ease-in;
+    transition: opacity 400ms ease-in;
     pointer-events: none;
 }
 .modalDialog:target {
@@ -221,16 +225,30 @@
     pointer-events: auto;
 }
 .modalDialog > div {
+    height: 73%;
     width: 55%;
     position: relative;
     margin: 10% auto;
     padding: 5px 20px 13px 20px;
-    /* border-radius: 10px; */
-    /* background-image: linear-gradient(to bottom right, #acb6e5, #86fde8); */
-    background-color: #ffffff;
-    opacity: 1;
-    box-shadow: 1px 1px 5px #7ebf5a;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom right, #acb6e5, #86fde8);
+    opacity: 0.97;
+}
 
+.row{
+   padding-right: 7%;
+  height: 80%;
+  width: 55%;
+}
+
+}
+.circular {
+
+  width: 611px;
+  height: 593px;
+-webkit-border-radius: 150px;
+ -moz-border-radius: 150px;
+  border-radius: 150px;
 }
 .close {
     background: #FFFFFF;
@@ -250,6 +268,9 @@
 .close:hover {
     background: #00d9ff;
   }
+.close:hover {
+    background: #00d9ff;
+  }
 
 .emoji-emojis:hover {
   cursor: pointer;
@@ -265,18 +286,22 @@
 
 }
 
+a:hover {
+  color:inherit;
+}
+
     </style>
   </head>
 
   <body>
     <nav>
       <div class="" style="display: inline-block; margin-left: 3%;">
-        <a href="#" id="logoName">Moodify</a> <br>
+        <a href="#" id="logoName" style="text-decoration:none;">Moodify</a> <br>
         <span style="font-weight: 500; font-size: 11px;">Listen With Your Heart</span>
       </div>
-      <a href="#about" style="float: right; margin-top: 20px; margin-right: 3%;font-weight: 500;">About Us</a>
+      <a href="#about" style="float: right; margin-top: 20px; margin-right: 3%;font-weight: 500;text-decoration:none;">About Us</a>
 
-      <div id="about" class="modalDialog">
+      <!-- <div id="about" class="modalDialog">
           <div> <a href="#close" title="Close" class="close">X</a>
                 <p style="font-size: 15px;">About Us</p>
                 <h2 style="text-align: center; font-size: 50px;font-weight: 500;">We care about music. We care about you.</h2>
@@ -285,6 +310,41 @@
                 a love for music and a passion for shortcuts.
                 Together, they found an easy way to do a great thing.
                 Quick access to the best songs for every mood, Moodify wants you to listen with your heart. </p>
+          </div>
+      </div> -->
+      <div id="about" class="modalDialog">
+          <div> <a href="#close" title="Close" class="close">X</a>
+                <p style="font-size: 15px;">About Us</p>
+                <h2 style="text-align: center; font-size: 50px;font-weight: 500;">We care about music. We care about you.</h2>
+              <p style="text-align: center; font-style: italic;font-weight: 100" >
+                Moodify was founded in 2019 by four Tufts University undergrads with two things in common:
+                a love for music and a passion for shortcuts.
+                Together, they found an easy way to do a great thing.
+                Quick access to the best songs for every mood, Moodify wants you to listen with your heart.
+                         <article style="padding-left: 10%;">
+                  <h1 style="text-align: center; font-style: italic;font-weight: 100"> Our Team</h1>
+                   <section>
+                          <div class="container">
+                              <div class="row">
+                                <div class="circular">
+                                  <div class="col-sm-3">
+                                          <img src="c1.png" data-img="c2.png" class="swim img-responsive"/>
+                                  </div>
+                                  <div class="col-sm-3">
+                                          <img src="o1.png" data-img="o2.png" class="swim img-responsive"/>
+                                  </div>
+
+                                  <div class="col-sm-3">
+                                          <img src="r1.png" data-img="r2.png" class="swim img-responsive"/>
+                                  </div>
+                                  <div class="col-sm-3">
+                                          <img src="e1.png" data-img="e2.png" class="swim img-responsive"/>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                  </section>
+              </article>
           </div>
       </div>
     </nav>

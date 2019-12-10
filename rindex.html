@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
@@ -9,14 +9,14 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
     <meta charset="utf-8">
     <link href="swapimagesonhover.css" rel="stylesheet" type="text/css"/>
-      <script src="swapimagesonhover.js" type="text/javascript"></script>
+       <script src="swapimagesonhover.js" type="text/javascript"></script>
     <title>Moodify -- Listen with your heart</title>
     <style>
-     @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap');
+      @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap');
     </style>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
-       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-       crossorigin="anonymous">
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous">
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
@@ -67,7 +67,7 @@
       }
       #about {
         float: right;
-        /* margin-top: 15px; */
+        /* margin-top: 20px; */
         margin-right: 3%;
         font-weight: 500;
       }
@@ -133,15 +133,14 @@
         width: 27%;
         background-color: rgba(255, 255, 255, 0.8);
         text-align: center;
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-top: 15px;
-        padding-bottom: 7px;
+        padding: 15px 15px;
         margin:0 auto;
       }
 
       .songFeedback:hover {
+        /* box-shadow: -7px 15px 30px rgba(0, 0, 0, 0.6); */
         box-shadow: 1px 1px 5px #7ebf5a;
+
         transition: 0.2s;
       }
 
@@ -269,40 +268,21 @@
 .close:hover {
     background: #00d9ff;
   }
-.close:hover {
-    background: #00d9ff;
-  }
-
 
 .emoji-emojis:hover {
   cursor: pointer;
 }
 
-/* #audioPlayer {
+#audioPlayer {
   position: fixed;
   right:3%;
   bottom: 15%;
   z-index: 15;
   border-radius: 25px;
   box-shadow: -7px 10px 30px rgba(0, 0, 0, 0.3);
-} */
-
-.audioPlayerList {
-  margin-top: 10px;
-  border-radius: 25px;
-  box-shadow: 1px 1px 5px #7ebf5a;
-  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.3);
-}
-
-.audioPlayerList:hover {
-  box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.6);
-  transition: 0.3s
 
 }
 
-a:hover {
-  color:inherit;
-}
     </style>
   </head>
 
@@ -312,19 +292,8 @@ a:hover {
         <a href="#" id="logoName">Moodify</a> <br>
         <span style="font-weight: 500; font-size: 11px;">Listen With Your Heart</span>
       </div>
-      <!-- <a href="#about" style="float: right; margin-top: 20px; margin-right: 3%;font-weight: 500;text-decoration:none;">About Us</a>
+      <a href="#about" style="float: right; margin-top: 20px; margin-right: 3%;font-weight: 500;">About Us</a>
 
-      <!-- <div id="about" class="modalDialog">
-          <div> <a href="#close" title="Close" class="close">X</a>
-                <p style="font-size: 15px;">About Us</p>
-                <h2 style="text-align: center; font-size: 50px;font-weight: 500;">We care about music. We care about you.</h2>
-              <p style="text-align: center; font-style: italic;font-weight: 100" >
-                Moodify was founded in 2019 by four Tufts University undergrads with two things in common:
-                a love for music and a passion for shortcuts.
-                Together, they found an easy way to do a great thing.
-                Quick access to the best songs for every mood, Moodify wants you to listen with your heart. </p>
-          </div>
-      </div> -->
       <div id="about" class="modalDialog">
           <div> <a href="#close" title="Close" class="close">X</a>
                 <p style="font-size: 15px;">About Us</p>
@@ -359,7 +328,7 @@ a:hover {
                   </section>
               </article>
           </div>
-      </div> -->
+      </div>
     </nav>
 
     <div class="mainSentence">
@@ -449,6 +418,10 @@ a:hover {
       </div>
     </div>
 
+    <audio controls id="audioPlayer">
+      <source src="" type="audio/mpeg">
+    </audio>
+
     <div class="results" id="results">
     </div>
 
@@ -525,6 +498,7 @@ a:hover {
         for (var i = 0; i < songArray.length; i++) {
           printSong(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
           // console.log(songArray[i].preview);
+          $("#audioPlayer").append("<source src=" + songArray[i].preview + ">");
           writeSongData(songArray[i].title, songArray[i].artist.name, songArray[i].album.title, songArray[i].preview);
         }
         document.getElementById("results").innerHTML += "<br/><br/><br/><br/>";
@@ -543,13 +517,18 @@ a:hover {
         $("#results").append("<div class='songFeedback' style='text-align:center;'>"+
                               "<span class='songFeedbackTitle' >" + title + "</span><br/>"+
                               "<span class='songFeedbackArtist'>By " + artist + ", <br/><i>" + album + "</i></span><br/>" +
-                              // "<span class='songFeedbackPlayback' onclick='transferURL()' data-url=" + preview + ">Play</span><br/>" +
-                              "<audio controls class='audioPlayerList'> <source src=" + preview + "> </audio>" +
+                              "<span class='songFeedbackPlayback' onclick='transferURL()' data-url=" + preview + ">Play</span><br/>" +
+                              // "<audio controls> <source src=" + preview + "> </audio>" +
                               "</div><br/>");
 
          //$("#results").append('<img class="playBackButton" src="playback.png" />');
         //<img class="playBackButton" src="playback.png" />
         //$(#results).append("<button class='songFeedbackPlayback' >Play</button>");
+      }
+
+      function transferURL () {
+        var x = this.getAttribute("data-url");
+        console.log(x);
       }
 
   // Your web app's Firebase configuration
