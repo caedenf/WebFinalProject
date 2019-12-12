@@ -589,9 +589,7 @@ function loadPastSongs() {
     document.getElementById("pastSearches").innerHTML = "";
     for (var i = 0; i < 10; i++) {
       var rand = Math.floor((Math.random() * length) + 1);
-      if (array[Object.keys(array)[rand]].artist != "undefined") {
         $("#pastSearches").append("<p class='pastSongFeedback'>" + array[Object.keys(array)[rand]].artist + "</p><br/>");
-      }
       //document.getElementById("pastSearches").innerHTML += array[Object.keys(array)[rand]].artist + "<br/>";
       }
   });
